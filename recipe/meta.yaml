@@ -1,5 +1,5 @@
 {% set name = "ginput" %}
-{% set version = "1.5.1" %}
+{% set version = "1.6.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/TCCON/py-ginput/archive/v{{ version }}.tar.gz
-  sha256: a8341f436e1dfe2cd8653e6402cbaa9fdacfc4acc7229f9fb7b055781b453e50 
+  sha256: fc55b7778b9f84db36deca5b09986d6ec4c0732f1f7b8593400aa2538b965baf
 
 build:
   noarch: python
