@@ -28,7 +28,7 @@ requirements:
     - jplephem >=2.9
     - matplotlib-base >=3.0.3
     - netcdf4 >=1.4.2
-    - numpy >=1.23.0
+    - numpy >=1.23.0,<2.0.0
     - pandas >=1.0.0
     - pydap >=3.2.2
     - python-dateutil >=2.8.2
@@ -45,7 +45,7 @@ test:
     - tests
   commands:
     - pip check
-    - pytest -m "not slow" tests/
+    - pytest -m "not slow and not glacial" tests/
   requires:
     - python {{ python_min }}
     - pip
