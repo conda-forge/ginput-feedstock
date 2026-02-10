@@ -1,5 +1,5 @@
 {% set name = "ginput" %}
-{% set version = "1.6.1" %}
+{% set version = "1.6.2" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/TCCON/py-ginput/archive/v{{ version }}.tar.gz
-  sha256: fc55b7778b9f84db36deca5b09986d6ec4c0732f1f7b8593400aa2538b965baf
+  sha256: dbba7eba71e441697318e794c9121f72528bc546656513b5a1bb7e1e4cc08bf0
 
 build:
   noarch: python
@@ -22,6 +22,7 @@ requirements:
   run:
     - python >={{ python_min }}
     - astropy-base >=3.1.2
+    - cftime >=1.5.1
     - cfunits >=3.3.2
     - ephem >=3.7.6.0
     - h5py >=2.9.0
@@ -29,9 +30,10 @@ requirements:
     - matplotlib-base >=3.0.3
     - netcdf4 >=1.4.2
     - numpy >=1.23.0,<2.0.0
-    - pandas >=1.0.0
+    - pandas >=1.0.0,<3.0.0
     - pydap >=3.2.2
     - python-dateutil >=2.8.2
+    - pytz >=2023.3
     - requests >=2.14.2
     - scipy >=1.5.4
     - sgp4 >=1.4
@@ -45,6 +47,8 @@ test:
     - tests
   commands:
     - pip check
+    - python -c 'from ginput import __main__'  # ensure that the entry point imports - implicitly checks the critical submodules
+    - ginput_cli --help  # ensure that the CLI program installed correctly
     - pytest -m "not slow and not glacial" tests/
   requires:
     - python {{ python_min }}
