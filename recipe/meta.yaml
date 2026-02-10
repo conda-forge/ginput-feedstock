@@ -47,6 +47,8 @@ test:
     - tests
   commands:
     - pip check
+    - python -c 'from ginput import __main__'  # ensure that the entry point imports - implicitly checks the critical submodules
+    - ginput_cli --help  # ensure that the CLI program installed correctly
     - pytest -m "not slow and not glacial" tests/
   requires:
     - python {{ python_min }}
